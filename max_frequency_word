@@ -1,0 +1,29 @@
+
+def max_frequency_word_counter(data):
+    word=""
+    frequency=0
+    data_list = data.replace("-"," ").split()
+    word_freq = {}
+    for i in range(len(data_list)):
+      if data_list[i].isalpha():
+        if data_list[i].lower() not in word_freq:
+            word_freq[data_list[i].lower()] = 1
+        else:
+            word_freq[data_list[i].lower()] += 1
+
+
+    for key , value in word_freq.items():
+        if value > frequency:
+            frequency = value
+            word = key
+        elif value == frequency:
+            if len(key) > len(word):
+                word = key
+
+
+    print(word , frequency )
+
+ 
+#Provide different values for data and test your program.
+data="data-Rain on the green grass and Rain on the tree"
+max_frequency_word_counter(data)
